@@ -8,6 +8,8 @@ class RegisterController extends Controller
     {
         $this->checkSessionAndViewConnection();
 
+
+
         View::generate('form', $this->getConfiguration());
     }
 }
