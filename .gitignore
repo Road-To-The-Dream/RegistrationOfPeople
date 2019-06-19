@@ -1,0 +1,4 @@
+vendor/
+.idea/
+app/Core/logs/logs.log
+app/conf/Configuration.php
