@@ -26,7 +26,7 @@ class Controller
         $this->configuration = $configuration;
     }
 
-    protected function checkSessionAndViewConnection(): void
+    protected function loadConfigurationAndTemplate(): void
     {
         $this->configuration = require __DIR__ . '/../conf/Configuration.php';
 

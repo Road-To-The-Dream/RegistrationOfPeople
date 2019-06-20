@@ -15,7 +15,7 @@ class RegisterController extends Controller
 
     public function index()
     {
-        $this->checkSessionAndViewConnection();
+        $this->loadConfigurationAndTemplate();
 
         View::generate('form', $this->getConfiguration(), json_encode($this->objTerritory->getArea()));
     }
