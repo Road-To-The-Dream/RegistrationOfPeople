@@ -54,7 +54,5 @@
         areas.forEach(function(area) {
             $('.chosen-select').append('<option value="s">' + area + '</option>');
         });
-
-        $('.chosen-select').trigger("chosen:updated");
     });
 </script>
