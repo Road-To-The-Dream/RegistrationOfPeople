@@ -6,13 +6,17 @@ use app\Models\Territory;
 
 class RegisterController extends Controller
 {
+    private $objTerritory;
+
+    public function __construct()
+    {
+        $this->objTerritory = new Territory();
+    }
+
     public function index()
     {
         $this->checkSessionAndViewConnection();
 
-        $obj = new Territory();
-        $data = $obj->getAll();
-
-        View::generate('form', $this->getConfiguration());
+        View::generate('form', $this->getConfiguration(), json_encode($this->objTerritory->getArea()));
     }
 }

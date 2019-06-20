@@ -11,24 +11,25 @@ class Territory extends Model
         $this->initConnection();
     }
 
-    public function getAll()
+    public function getArea()
     {
-        $query = "SELECT ter_id, ter_name, ter_address FROM t_koatuu_tree LIMIT 100";
+        $query = "SELECT ter_address FROM t_koatuu_tree";
 
-        return ConnectionManager::executionQuery($query);
+        $data = ConnectionManager::executionQuery($query);
 
-//        $dataCount = count($imageInfo);
-//
-//        $imageList = [];
-//        for ($i = 0; $i < $dataCount; $i++) {
-//            $objImage = new self();
-//            $objImage->setImageName($imageInfo[$i]['image_name'])
-//                ->setPath($imageInfo[$i]['path'])
-//                ->setCreateAt($imageInfo[$i]['create_at']);
-//
-//            $imageList[] = $objImage;
-//        }
-//
-//        return $imageList;
+        $count = 0;
+        $areas = [];
+
+        foreach ($data as $item) {
+            $area = explode(',', $item['ter_address']);
+
+            if (array_search(trim(end($area)), $areas) === false) {
+                array_push($areas, strtolower(trim(end($area))));
+            }
+
+            $count++;
+        }
+
+        return $areas;
     }
 }

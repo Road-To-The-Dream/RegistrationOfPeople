@@ -12,7 +12,8 @@
                                 <label for="FIO" class="col-md-4 col-form-label text-md-right">Ф И О :</label>
 
                                 <div class="col-md-6">
-                                    <input id="fio" type="text" class="form-control" name="fio" value="" required autofocus>
+                                    <input id="fio" type="text" class="form-control" name="fio" value="" required
+                                           autofocus>
                                 </div>
                             </div>
 
@@ -25,10 +26,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">Email :</label>
+                                <label for="area" class="col-md-4 col-form-label text-md-right">Email :</label>
 
                                 <div class="col-md-6">
-                                    <select name="" id="" class="chosen-select">
+                                    <select name="area" id="area" class="chosen-select">
 
                                     </select>
                                 </div>
@@ -43,5 +44,17 @@
 </div>
 
 <script>
-    $(".chosen-select").chosen()
+    $(".chosen-select").chosen({
+        width: "100%"
+    });
+
+    $(document).ready(function () {
+        let areas = eval('<?= $data ?>');
+
+        areas.forEach(function(area) {
+            $('.chosen-select').append('<option value="s">' + area + '</option>');
+        });
+
+        $('.chosen-select').trigger("chosen:updated");
+    });
 </script>
