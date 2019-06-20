@@ -11,7 +11,7 @@ class Territory extends Model
         $this->initConnection();
     }
 
-    public function getArea()
+    public function getAreas()
     {
         $query = "SELECT ter_address FROM t_koatuu_tree";
 

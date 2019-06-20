@@ -9,7 +9,7 @@
                         <form id="form" method="POST" action="">
 
                             <div class="form-group row">
-                                <label for="fio" class="col-md-4 col-form-label text-md-right">Ф И О :</label>
+                                <label for="fio" class="col-md-4 col-form-label text-md-right">F I O :</label>
 
                                 <div class="col-md-6">
                                     <input id="fio" type="text" class="form-control" name="fio" value="" required
@@ -25,11 +25,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row area">
-                                <label for="area" class="col-md-4 col-form-label text-md-right">Area :</label>
+                            <div class="form-group row areas">
+                                <label for="areas" class="col-md-4 col-form-label text-md-right">Area :</label>
 
                                 <div class="col-md-6">
-                                    <select name="area" id="area" class="chosen-select">
+                                    <select name="area" id="areas" class="chosen-select">
                                         <option value="" selected disabled hidden>Select your area</option>
                                     </select>
                                 </div>
@@ -45,15 +45,3 @@
     <div class='hidden' data-host='<?= $configuration['baseHost'] ?>'></div>
 
 </div>
-
-<script>
-    $(document).ready(function () {
-        let areas = eval('<?= $data ?>');
-
-        areas.forEach(function (area) {
-            $('.chosen-select').append('<option value="' + area + '">' + area + '</option>');
-        });
-
-        $('.chosen-select').trigger("chosen:updated");
-    });
-</script>

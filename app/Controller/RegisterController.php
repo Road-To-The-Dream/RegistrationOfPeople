@@ -18,7 +18,12 @@ class RegisterController extends Controller
     {
         $this->loadConfigurationAndTemplate();
 
-        View::generate('form', $this->getConfiguration(), json_encode($this->objTerritory->getArea()));
+        View::generate('form', $this->getConfiguration());
+    }
+
+    public function getAreas()
+    {
+        echo json_encode($this->objTerritory->getAreas());
     }
 
     public function getRegions()

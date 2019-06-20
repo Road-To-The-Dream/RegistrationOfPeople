@@ -3,11 +3,13 @@ $(document).ready(function () {
 
     activateSelect();
 
-    $('#area').on('change', function () {
+    getAreas(host);
+
+    $('#areas').on('change', function () {
         getRegions(host, $(this).val());
     });
 
-    $(document).on('change', '#region', function () {
+    $(document).on('change', '#regions', function () {
         getCities(host, $(this).val());
     });
 });
@@ -18,14 +20,34 @@ function activateSelect() {
     });
 }
 
-function getRegions(host, area) {
-    $('div.region').remove();
+function getAreas(host) {
+    $.ajax({
+        url: 'http://' + host + '/register/getAreas',
+        type: 'post',
+        success: function (response) {
+            let areas = JSON.parse(response);
 
-    $('#form').append('<div class="form-group row region">\n' +
-        '                                <label for="region" class="col-md-4 col-form-label text-md-right">Region :</label>\n' +
+            areas.forEach(function (area) {
+                $('#areas').append('<option value="' + area + '">' + area + '</option>');
+            });
+
+            $('#areas').trigger("chosen:updated");
+        },
+
+        error: function (response) {
+            console.log("Error");
+        }
+    })
+}
+
+function getRegions(host, area) {
+    $('div.regions').remove();
+
+    $('#form').append('<div class="form-group row regions">\n' +
+        '                                <label for="regions" class="col-md-4 col-form-label text-md-right">Region :</label>\n' +
         '\n' +
         '                                <div class="col-md-6">\n' +
-        '                                    <select name="region" id="region" class="chosen-select">\n' +
+        '                                    <select name="region" id="regions" class="chosen-select">\n' +
         '                                        <option value="" selected disabled hidden>Select your region</option>\n' +
         '                                    </select>\n' +
         '                                </div>\n' +
@@ -41,10 +63,10 @@ function getRegions(host, area) {
             let regions = JSON.parse(response);
 
             regions.forEach(function (region) {
-                $('#region').append('<option value="' + region + '">' + region + '</option>');
+                $('#regions').append('<option value="' + region + '">' + region + '</option>');
             });
 
-            $('#region').trigger("chosen:updated");
+            $('#regions').trigger("chosen:updated");
         },
 
         error: function (response) {
@@ -56,11 +78,11 @@ function getRegions(host, area) {
 function getCities(host, region) {
     $('div.city').remove();
 
-    $('#form').append('<div class="form-group row city">\n' +
-        '                                <label for="city" class="col-md-4 col-form-label text-md-right">City :</label>\n' +
+    $('#form').append('<div class="form-group row cities">\n' +
+        '                                <label for="cities" class="col-md-4 col-form-label text-md-right">City :</label>\n' +
         '\n' +
         '                                <div class="col-md-6">\n' +
-        '                                    <select name="city" id="city" class="chosen-select">\n' +
+        '                                    <select name="city" id="cities" class="chosen-select">\n' +
         '                                        <option value="" selected disabled hidden>Select your city</option>\n' +
         '                                    </select>\n' +
         '                                </div>\n' +
@@ -76,10 +98,10 @@ function getCities(host, region) {
             let cities = JSON.parse(response);
 
             cities.forEach(function (city) {
-                $('#city').append('<option value="' + city + '">' + city + '</option>');
+                $('#cities').append('<option value="' + city + '">' + city + '</option>');
             });
 
-            $('#city').trigger("chosen:updated");
+            $('#cities').trigger("chosen:updated");
         },
 
         error: function (response) {
