@@ -6,12 +6,10 @@ namespace app\Controller;
  * Class ErrorController
  * @package app\Controller
  */
-class ErrorController
+class ErrorController extends Controller
 {
     public function index(): void
     {
-        $configuration = require __DIR__ . '/../conf/Configuration.php';
-
-        View::generate('error', $configuration['baseHost']);
+        View::generate('error', $this->getConfiguration());
     }
 }

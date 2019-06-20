@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="content-404">
-    <a href="http://<?= $configuration ?>/form">Перейти к главной странице</a>
+    <a href="http://<?= $configuration['baseHost'] ?>/">Перейти к главной странице</a>
 </div>
 </body>
 </html>
