@@ -6,10 +6,10 @@
                     <div class="card-header">Data</div>
 
                     <div class="card-body">
-                        <form method="POST" action="">
+                        <form id="form" method="POST" action="">
 
                             <div class="form-group row">
-                                <label for="FIO" class="col-md-4 col-form-label text-md-right">Ф И О :</label>
+                                <label for="fio" class="col-md-4 col-form-label text-md-right">Ф И О :</label>
 
                                 <div class="col-md-6">
                                     <input id="fio" type="text" class="form-control" name="fio" value="" required
@@ -25,12 +25,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="area" class="col-md-4 col-form-label text-md-right">Email :</label>
+                            <div class="form-group row area">
+                                <label for="area" class="col-md-4 col-form-label text-md-right">Area :</label>
 
                                 <div class="col-md-6">
                                     <select name="area" id="area" class="chosen-select">
-
+                                        <option value="" selected disabled hidden>Select your area</option>
                                     </select>
                                 </div>
                             </div>
@@ -41,18 +41,17 @@
             </div>
         </div>
     </div>
+
+    <div class='hidden' data-host='<?= $configuration['baseHost'] ?>'></div>
+
 </div>
 
 <script>
-    $(".chosen-select").chosen({
-        width: "100%"
-    });
-
     $(document).ready(function () {
         let areas = eval('<?= $data ?>');
 
-        areas.forEach(function(area) {
-            $('.chosen-select').append('<option value="s">' + area + '</option>');
+        areas.forEach(function (area) {
+            $('.chosen-select').append('<option value="' + area + '">' + area + '</option>');
         });
 
         $('.chosen-select').trigger("chosen:updated");

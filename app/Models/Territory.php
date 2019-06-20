@@ -32,4 +32,26 @@ class Territory extends Model
 
         return $areas;
     }
+
+    public function getRegions()
+    {
+        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%" . $_POST['area'] . "%'";
+
+        $data = ConnectionManager::executionQuery($query);
+
+        $count = 0;
+        $regions = [];
+
+        foreach ($data as $item) {
+            $region = explode(',', $item['ter_address']);
+
+            if (array_search(trim($region[count($region) - 2]), $regions) === false) {
+                array_push($regions, strtolower(trim($region[count($region) - 2])));
+            }
+
+            $count++;
+        }
+
+        return $regions;
+    }
 }

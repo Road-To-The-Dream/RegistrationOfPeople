@@ -11,6 +11,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="js/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="js/chosenHandler.js"></script>
 </head>
 <body>
 <header>
