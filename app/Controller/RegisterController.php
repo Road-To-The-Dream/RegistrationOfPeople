@@ -25,4 +25,9 @@ class RegisterController extends Controller
     {
         echo json_encode($this->objTerritory->getRegions());
     }
+
+    public function getCities()
+    {
+        echo json_encode($this->objTerritory->getCities());
+    }
 }
