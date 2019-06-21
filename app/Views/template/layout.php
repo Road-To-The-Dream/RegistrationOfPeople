@@ -4,14 +4,19 @@
     <title></title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/chosen.css">
+
+    <!-- Scripts -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="js/chosen.jquery.min.js"></script>
     <script type="text/javascript" src="js/chosenHandler.js"></script>
+    <script type="text/javascript" src="js/validationInput.js"></script>
 </head>
 <body>
 <header>

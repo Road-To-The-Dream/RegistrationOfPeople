@@ -10,7 +10,20 @@ $(document).ready(function () {
     });
 
     $(document).on('change', '#regions', function () {
+        $('div.cities').remove();
+        $('div.submit').remove();
+
         getCities(host, $(this).val());
+    });
+
+    $(document).on('change', '#cities', function () {
+        $('div.submit').remove();
+
+        $('#form').append('<div class="form-group row justify-content-center submit">\n' +
+            '                                <div class="col-md-8 text-md-right">\n' +
+            '                                    <button type="submit" class="btn btn-success">Submit</button>\n' +
+            '                                </div>\n' +
+            '                            </div>');
     });
 });
 
@@ -35,7 +48,7 @@ function getAreas(host) {
         },
 
         error: function (response) {
-            console.log("Error");
+            console.log("Error" + response);
         }
     })
 }
@@ -70,7 +83,7 @@ function getRegions(host, area) {
         },
 
         error: function (response) {
-            console.log("Error");
+            console.log("Error" + response);
         }
     })
 }
@@ -105,7 +118,7 @@ function getCities(host, region) {
         },
 
         error: function (response) {
-            console.log("Error");
+            console.log("Error" + response);
         }
     })
 }

@@ -2,7 +2,7 @@
 
 namespace app\Models;
 
-use App\Core\ConnectionManager;use Illuminate\Database\Eloquent\Model;
+use app\Core\ConnectionManager;
 
 class User
 {
