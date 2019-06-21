@@ -33,9 +33,9 @@ class Territory extends Model
         return $areas;
     }
 
-    public function getRegions()
+    public function getRegions($area)
     {
-        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%" . $_POST['area'] . "%'";
+        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%" . $area . "%'";
 
         $data = ConnectionManager::executionQuery($query);
 
