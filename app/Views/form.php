@@ -12,7 +12,7 @@
                                 <label for="fio" class="col-md-4 col-form-label text-md-right">F I O :</label>
 
                                 <div class="col-md-6">
-                                    <input id="fio" type="text" class="form-control" name="fio" value="" required
+                                    <input id="fio" type="text" class="form-control" name="fio" value=""
                                            autofocus>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
 
                                 <div class="col-md-6">
                                     <select name="area" id="areas" class="chosen-select">
-                                        <option value="" selected disabled hidden>Select your area</option>
+                                        <option value="null" selected disabled hidden>Select your area</option>
                                     </select>
                                 </div>
                             </div>
