@@ -29,7 +29,7 @@
 
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav list mr-auto">
-                    <a href="http://<?= $configuration['baseHost'] ?>/login">Login</a>
+                    <a href="http://<?= $configuration['baseHost'] ?>/">Registration</a>
                 </ul>
             </div>
         </nav>

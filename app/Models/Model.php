@@ -41,7 +41,7 @@ class Model
         $this->updateAt = $updateAt;
     }
 
-    protected function initConnection(): void
+    public function __construct()
     {
         ConnectionManager::getInstance();
     }

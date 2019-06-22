@@ -101,12 +101,19 @@ class User extends Model
 
     /**
      * @param $email
-     * @return bool|null
+     * @return User
      */
-    public function getUser($email)
+    public function getUser($email): User
     {
-        $query = "SELECT id FROM Users WHERE email = '$email'";
+        $query = "SELECT id, fio, territory_id FROM Users WHERE email = '$email'";
 
-        return ConnectionManager::executionQuery($query);
+        $data = ConnectionManager::executionQuery($query);
+
+        $obj = new self();
+        $obj->setId($data[0]['id'])
+            ->setFio($data[0]['fio'])
+            ->setTerritoryId($data[0]['territory_id']);
+
+        return $obj;
     }
 }

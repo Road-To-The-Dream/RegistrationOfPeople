@@ -28,7 +28,7 @@ $(document).ready(function () {
                 },
 
                 success: function (response) {
-                    console.log(response);
+                    window.location = response;
                 },
 
                 error: function (response) {

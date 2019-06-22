@@ -2,6 +2,7 @@
 
 namespace app\Controller;
 
+use app\Core\SessionManager;
 use app\Models\Territory;
 use app\Services\StringService;
 use app\Models\User;
@@ -10,48 +11,51 @@ class RegisterController extends Controller
 {
     private $objTerritory;
     private $objUser;
-    private const DATETIME_FORMAT = 'Y-m-d H:i:s';
 
     public function __construct()
     {
         parent::__construct();
+
         $this->objTerritory = new Territory();
         $this->objUser = new User();
     }
 
-    public function index()
+    public function index(): void
     {
-        $this->loadConfigurationAndTemplate();
-
         View::generate('form', $this->getConfiguration());
     }
 
-    public function getAreas()
+    public function getAreas(): void
     {
         echo json_encode($this->objTerritory->getAreas());
     }
 
-    public function getRegions()
+    public function getRegions(): void
     {
         echo json_encode($this->objTerritory->getRegions(StringService::cleanField($_POST['area'])));
     }
 
-    public function getCities()
+    public function getCities(): void
     {
         echo json_encode($this->objTerritory->getCities(StringService::cleanField($_POST['region'])));
     }
 
-    public function isUser()
+    public function isUser(): void
     {
-        if ($this->objUser->getUser(StringService::cleanField($_POST['email']))) {
-            echo 'redirect';
+        $userInfo = $this->objUser->getUser(StringService::cleanField($_POST['email']));
+
+        if ($userInfo->getId()) {
+            SessionManager::setInfoInSession([
+                'email' => StringService::cleanField($_POST['email'])
+            ]);
+
+            echo "http://{$_SERVER['HTTP_HOST']}/contact";
         } else {
             $this->addUser();
-            echo 'not';
         }
     }
 
-    private function addUser()
+    private function addUser(): void
     {
         $territoryId = $this->objTerritory->getTerritoryId(
             StringService::cleanField($_POST['area']),

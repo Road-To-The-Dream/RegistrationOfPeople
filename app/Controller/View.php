@@ -1,18 +1,26 @@
 <?php
 
-namespace App\Controller;
+namespace app\Controller;
 
-use App\Services\Redirect;
+use app\Services\Redirect;
 
 /**
- * Class Views
- * @package App\Controller
+ * Class View
+ * @package app\Controller
  */
 class View
 {
-    public static function generate($contentView, $configuration, $data = null)
+    /**
+     * @param $contentView
+     * @param $configuration
+     * @param null $data
+     * @return bool
+     */
+    public static function generate($contentView, $configuration, $data = null): bool
     {
         ob_start();
+
+        require_once __DIR__ . '/../Views/template/layout.php';
 
         if (file_exists(__DIR__ . '/../Views/' . $contentView . '.php')) {
             require_once __DIR__ . '/../Views/' . $contentView . '.php';

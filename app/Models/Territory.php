@@ -7,6 +7,7 @@ use app\Core\ConnectionManager;
 class Territory extends Model
 {
     private $id;
+    private $address;
 
     /**
      * @return mixed
@@ -17,16 +18,33 @@ class Territory extends Model
     }
 
     /**
-     * @param mixed $id
+     * @param $id
+     * @return Territory
      */
-    public function setId($id): void
+    public function setId($id): self
     {
         $this->id = $id;
+
+        return $this;
     }
 
-    public function __construct()
+    /**
+     * @return mixed
+     */
+    public function getAddress()
     {
-        $this->initConnection();
+        return $this->address;
+    }
+
+    /**
+     * @param $address
+     * @return Territory
+     */
+    public function setAddress($address): self
+    {
+        $this->address = $address;
+
+        return $this;
     }
 
     public function getAreas()
@@ -53,7 +71,7 @@ class Territory extends Model
 
     public function getRegions($area)
     {
-        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%$area%'";
+        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%$area%' AND ter_address LIKE '%район%'";
 
         $data = ConnectionManager::executionQuery($query);
 
@@ -107,5 +125,16 @@ class Territory extends Model
         $obj->setId($data[0]['ter_id']);
 
         return $obj;
+    }
+
+    public function getAddressById($id)
+    {
+        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_id = $id";
+
+        $data = ConnectionManager::executionQuery($query);
+
+        $obj = new self();
+
+        return $obj->setAddress($data[0]['ter_address']);
     }
 }

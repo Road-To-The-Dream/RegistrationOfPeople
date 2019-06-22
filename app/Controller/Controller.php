@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use app\Core\SessionManager;
+
 /**
  * Class Controller
  * @package App\Controller
@@ -9,6 +11,7 @@ namespace App\Controller;
 class Controller
 {
     private $configuration;
+    protected const DATETIME_FORMAT = 'Y-m-d H:i:s';
 
     /**
      * @return mixed
@@ -28,12 +31,7 @@ class Controller
 
     public function __construct()
     {
+        SessionManager::startSession();
         $this->configuration = require __DIR__ . '/../conf/Configuration.php';
-    }
-
-    protected function loadConfigurationAndTemplate(): void
-    {
-        ob_start();
-        require_once __DIR__ . '/../Views/template/layout.php';
     }
 }
