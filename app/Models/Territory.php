@@ -6,6 +6,24 @@ use app\Core\ConnectionManager;
 
 class Territory extends Model
 {
+    private $id;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
     public function __construct()
     {
         $this->initConnection();
@@ -35,7 +53,7 @@ class Territory extends Model
 
     public function getRegions($area)
     {
-        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%" . $area . "%'";
+        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%$area%'";
 
         $data = ConnectionManager::executionQuery($query);
 
@@ -55,9 +73,9 @@ class Territory extends Model
         return $regions;
     }
 
-    public function getCities()
+    public function getCities($region)
     {
-        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%" . $_POST['region'] . "%'";
+        $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%$region%'";
 
         $data = ConnectionManager::executionQuery($query);
 
@@ -75,5 +93,19 @@ class Territory extends Model
         }
 
         return $cities;
+    }
+
+    public function getTerritoryId($area, $region, $city)
+    {
+        $query = "SELECT ter_id FROM t_koatuu_tree WHERE ter_address LIKE '%$area%'
+                    AND ter_address LIKE '%$region%'
+                    AND ter_address LIKE '%$city%'";
+
+        $data = ConnectionManager::executionQuery($query);
+
+        $obj = new self();
+        $obj->setId($data[0]['ter_id']);
+
+        return $obj;
     }
 }

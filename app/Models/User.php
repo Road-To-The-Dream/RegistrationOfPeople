@@ -4,14 +4,12 @@ namespace app\Models;
 
 use app\Core\ConnectionManager;
 
-class User
+class User extends Model
 {
     private $id;
     private $fio;
     private $email;
-    private $area_id;
-    private $region_id;
-    private $city_id;
+    private $territoryId;
 
     /**
      * @return mixed
@@ -73,68 +71,42 @@ class User
     /**
      * @return mixed
      */
-    public function getAreaId()
+    public function getTerritoryId()
     {
-        return $this->area_id;
+        return $this->territoryId;
     }
 
     /**
-     * @param $area_id
+     * @param $territoryId
      * @return User
      */
-    public function setAreaId($area_id): self
+    public function setTerritoryId($territoryId): self
     {
-        $this->area_id = $area_id;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRegionId()
-    {
-        return $this->region_id;
-    }
-
-    /**
-     * @param $region_id
-     * @return User
-     */
-    public function setRegionId($region_id): self
-    {
-        $this->region_id = $region_id;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCityId()
-    {
-        return $this->city_id;
-    }
-
-    /**
-     * @param $city_id
-     * @return User
-     */
-    public function setCityId($city_id): self
-    {
-        $this->city_id = $city_id;
+        $this->territoryId = $territoryId;
 
         return $this;
     }
 
     public function insert()
     {
-        $query = "INSERT INTO users (fio, email, create_at) VALUES (:login, {$this->getCreateAt()})";
+        $query = "INSERT INTO Users (fio, email, territory_id, created_at) VALUES (:fio, :email, :territory_id, {$this->getCreateAt()})";
         $parameters = [
             ':fio' => $this->getFio(),
             ':email' => $this->getEmail(),
+            ':territory_id' => $this->getTerritoryId()
         ];
 
         return ConnectionManager::executionQuery($query, $parameters);
+    }
+
+    /**
+     * @param $email
+     * @return bool|null
+     */
+    public function getUser($email)
+    {
+        $query = "SELECT id FROM Users WHERE email = '$email'";
+
+        return ConnectionManager::executionQuery($query);
     }
 }

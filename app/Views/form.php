@@ -42,14 +42,6 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-        areas.forEach(function(area) {
-            $('.chosen-select').append('<option value="s">' + area + '</option>');
-        });
-    });
-</script>
-=======
     <div class='hidden' data-host='<?= $configuration['baseHost'] ?>'></div>
 
 </div>
->>>>>>> feature/generateForm

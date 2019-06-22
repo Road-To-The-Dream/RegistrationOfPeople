@@ -14,5 +14,27 @@ $(document).ready(function () {
         if (!isValidEmail) {
             $('#email').after('<p class="m-0 text-danger">Field is empty</p>');
         }
+
+        if (isValidFIO && isValidEmail) {
+            $.ajax({
+                url: 'http://' + host + '/register/isUser',
+                type: 'post',
+                data: {
+                    fio: $('#fio').val(),
+                    email: $('#email').val(),
+                    area: $('#areas').val(),
+                    region: $('#regions').val(),
+                    city: $('#cities').val()
+                },
+
+                success: function (response) {
+                    console.log(response);
+                },
+
+                error: function (response) {
+                    console.log(response);
+                }
+            })
+        }
     })
 });
