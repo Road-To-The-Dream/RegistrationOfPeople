@@ -13,11 +13,16 @@ Import database dump from Database/ for correct work
 <li>
 In file configuration.php need to added in key baseHost name your host
 </li>
+<li>
+Run server need be carried out from directory public/
+</li>
 </ul>
 </ol> 
 <h5>Configuration database</h5>
 <ol>
 <li>
 In folder app/conf/ rename file configuration.php.example in configuration.php and fill it with your info for db connection
+
+In value 'baseHost' you need paste host name through which you will access the site
 </li>
 </ol>
