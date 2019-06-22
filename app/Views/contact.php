@@ -7,17 +7,36 @@
 
                     <div class="card-body">
 
-                        <div class="form-group row">
-                            <div class="col text-center">
-                                <label class="col-form-label text-md-right">User : <?= $data['user']->getFio(); ?></label>
-                            </div>
-                        </div>
+                        <?php if ($data['user']->getId() === null) {
+                            ?>
 
-                        <div class="form-group row">
-                            <div class="col text-center">
-                                <label class="col-form-label text-md-right">Address : <?= $data['address']->getAddress(); ?></label>
+                            <div class="form-group row">
+                                <div class="col text-center">
+                                    <label class="col-form-label text-md-right">User not found
+                                </div>
                             </div>
-                        </div>
+
+                            <?php
+                        } else {
+                            ?>
+
+                            <div class="form-group row">
+                                <div class="col text-center">
+                                    <label class="col-form-label text-md-right">User
+                                        : <?= $data['user']->getFio(); ?></label>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col text-center">
+                                    <label class="col-form-label text-md-right">Address
+                                        : <?= $data['address']->getAddress(); ?></label>
+                                </div>
+                            </div>
+
+                            <?php
+                        }
+                        ?>
 
                     </div>
                 </div>
