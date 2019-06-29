@@ -4,13 +4,10 @@ namespace app\Models;
 
 use app\Core\ConnectionManager;
 
-<<<<<<< HEAD
 /**
  * Class User
  * @package app\Models
  */
-=======
->>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
 class User extends Model
 {
     private $id;
@@ -94,14 +91,10 @@ class User extends Model
         return $this;
     }
 
-<<<<<<< HEAD
     /**
      * @return bool|null
      */
     public function insert(): bool
-=======
-    public function insert()
->>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
     {
         $query = "INSERT INTO Users (fio, email, territory_id, created_at) VALUES (:fio, :email, :territory_id, {$this->getCreateAt()})";
         $parameters = [

@@ -1,18 +1,10 @@
 <?php
 
-<<<<<<< HEAD
 namespace app\Core;
 
 /**
  * Class ConnectionManager
  * @package app\Core
-=======
-namespace App\Core;
-
-/**
- * Class ConnectionManager
- * @package App\Core
->>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
  */
 class ConnectionManager
 {
@@ -36,11 +28,7 @@ class ConnectionManager
     }
 
     /**
-<<<<<<< HEAD
      * @return mixed
-=======
-     * @return null
->>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
      */
     public static function getInstance()
     {

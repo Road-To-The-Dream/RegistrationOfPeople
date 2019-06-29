@@ -6,11 +6,7 @@ use app\Core\Router\Router;
 
 /**
  * Class Application
-<<<<<<< HEAD
  * @package app\Core
-=======
- * @package App\Core
->>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
  */
 class Application
 {
