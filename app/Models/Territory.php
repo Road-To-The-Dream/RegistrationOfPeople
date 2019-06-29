@@ -4,10 +4,13 @@ namespace app\Models;
 
 use app\Core\ConnectionManager;
 
+<<<<<<< HEAD
 /**
  * Class Territory
  * @package app\Models
  */
+=======
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
 class Territory extends Model
 {
     private $id;
@@ -51,10 +54,14 @@ class Territory extends Model
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * @return array
      */
     public function getAreas(): array
+=======
+    public function getAreas()
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
     {
         $query = "SELECT ter_address FROM t_koatuu_tree";
 
@@ -76,11 +83,15 @@ class Territory extends Model
         return $areas;
     }
 
+<<<<<<< HEAD
     /**
      * @param $area
      * @return array
      */
     public function getRegions($area): array
+=======
+    public function getRegions($area)
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
     {
         $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%$area%' AND ter_address LIKE '%район%'";
 
@@ -102,11 +113,15 @@ class Territory extends Model
         return $regions;
     }
 
+<<<<<<< HEAD
     /**
      * @param $region
      * @return array
      */
     public function getCities($region): array
+=======
+    public function getCities($region)
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
     {
         $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_address LIKE '%$region%'";
 
@@ -128,6 +143,7 @@ class Territory extends Model
         return $cities;
     }
 
+<<<<<<< HEAD
     /**
      * @param $area
      * @param $region
@@ -135,6 +151,9 @@ class Territory extends Model
      * @return Territory
      */
     public function getTerritoryId($area, $region, $city): Territory
+=======
+    public function getTerritoryId($area, $region, $city)
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
     {
         $query = "SELECT ter_id FROM t_koatuu_tree WHERE ter_address LIKE '%$area%'
                     AND ter_address LIKE '%$region%'
@@ -148,11 +167,15 @@ class Territory extends Model
         return $obj;
     }
 
+<<<<<<< HEAD
     /**
      * @param $id
      * @return Territory
      */
     public function getAddressById($id): Territory
+=======
+    public function getAddressById($id)
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
     {
         $query = "SELECT ter_address FROM t_koatuu_tree WHERE ter_id = $id";
 

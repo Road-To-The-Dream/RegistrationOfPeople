@@ -1,10 +1,18 @@
 <?php
 
+<<<<<<< HEAD
 namespace app\Core\Router;
 
 /**
  * Class URISplitter
  * @package app\Core\Router
+=======
+namespace App\Core\Router;
+
+/**
+ * Class URISplitter
+ * @package App\Core\Router
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
  */
 class URISplitter
 {

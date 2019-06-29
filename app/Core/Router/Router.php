@@ -6,6 +6,7 @@ use app\Services\Redirect;
 
 /**
  * Class Router
+<<<<<<< HEAD
  * @package app\Core\Router
  */
 class Router
@@ -15,6 +16,13 @@ class Router
      * @return array
      */
     public static function callAction($uri): array
+=======
+ * @package App\Core\Router
+ */
+class Router
+{
+    public static function callAction($uri)
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
     {
         $routingInfo = URISplitter::split($uri);
 
@@ -31,6 +39,10 @@ class Router
             }
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
         Redirect::redirectTo('error');
     }
 }

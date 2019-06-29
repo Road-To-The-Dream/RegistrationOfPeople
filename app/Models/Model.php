@@ -4,10 +4,13 @@ namespace app\Models;
 
 use app\Core\ConnectionManager;
 
+<<<<<<< HEAD
 /**
  * Class Model
  * @package app\Models
  */
+=======
+>>>>>>> 90822002d01fcebddd989437559e74336f1edfbb
 class Model
 {
     protected $createAt;
