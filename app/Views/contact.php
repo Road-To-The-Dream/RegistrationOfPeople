@@ -22,7 +22,8 @@
 
                             <div class="form-group row">
                                 <div class="col text-center">
-                                    <label class="col-form-label text-md-right text-success">User already exists !</label>
+                                    <label class="col-form-label text-md-right text-success">User already exists
+                                        !</label>
                                 </div>
                             </div>
 
